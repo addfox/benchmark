@@ -1,0 +1,10 @@
+{
+  "extension_name": { "message": "基准测试扩展" },
+  "popup_screenshot": { "message": "截取页面" },
+  "options_language": { "message": "语言" },
+  "options_permissions": { "message": "权限" },
+  "options_limits": { "message": "功能限制" },
+  "sidepanel_placeholder": { "message": "输入问题..." },
+  "space_title": { "message": "截图" },
+  "devtools_colors": { "message": "页面颜色" }
+}

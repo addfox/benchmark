@@ -1,0 +1,12 @@
+/node_modules
+*/**/node_modules
+*/**/dist
+*/**/.plasmo
+*/**/.yalc
+*/**/.addfox
+*/**/.wxt
+*/**/.output
+*/**/dev
+*/**/build
+*/**/.parcel-cache
+*/**/.vite

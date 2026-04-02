@@ -1,0 +1,38 @@
+{
+  "name": "extension-build-benchmark",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Benchmark dev (command start → ready/browser) and build (time + output size) for addfox, plasmo, extension.js, parcel-extension, wxt",
+  "scripts": {
+    "benchmark": "node scripts/benchmark.mjs",
+    "benchmark:dev": "node scripts/benchmark.mjs --dev-only",
+    "benchmark:build": "node scripts/benchmark.mjs --build-only",
+    "copy-icons": "node scripts/copy-icons.mjs",
+    "test:wxt": "node scripts/dev-benchmark.mjs wxt",
+    "test:addfox": "node scripts/dev-benchmark.mjs addfox",
+    "test:plasmo": "node scripts/dev-benchmark.mjs plasmo",
+    "build:wxt": "node scripts/build-benchmark.mjs wxt",
+    "build:addfox": "node scripts/build-benchmark.mjs addfox",
+    "build:plasmo": "node scripts/build-benchmark.mjs plasmo"
+  },
+  "devDependencies": {
+    "picocolors": "^1.1.1"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "overrides": {
+      "addfox": "file:addfox/.yalc/addfox",
+      "@addfox/cli": "file:addfox/.yalc/@addfox/cli",
+      "@addfox/core": "file:addfox/.yalc/@addfox/core",
+      "@addfox/common": "file:addfox/.yalc/@addfox/common",
+      "@addfox/utils": "file:addfox/.yalc/@addfox/utils",
+      "@addfox/pkg-manager": "file:addfox/.yalc/@addfox/pkg-manager",
+      "@addfox/rsbuild-plugin-extension-entry": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry",
+      "@addfox/rsbuild-plugin-extension-manifest": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest",
+      "@addfox/rsbuild-plugin-extension-hmr": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr",
+      "@addfox/rsbuild-plugin-extension-monitor": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor",
+      "@addfox/rsbuild-plugin-vue": "file:addfox/.yalc/@addfox/rsbuild-plugin-vue"
+    }
+  }
+}

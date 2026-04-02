@@ -1,0 +1,10 @@
+{
+  "extension_name": { "message": "Benchmark Extension" },
+  "popup_screenshot": { "message": "Capture page" },
+  "options_language": { "message": "Language" },
+  "options_permissions": { "message": "Permissions" },
+  "options_limits": { "message": "Feature limits" },
+  "sidepanel_placeholder": { "message": "Ask anything..." },
+  "space_title": { "message": "Screenshots" },
+  "devtools_colors": { "message": "Page colors" }
+}

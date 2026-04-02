@@ -1,0 +1,6 @@
+packages:
+  - "addfox"
+  - "plasmo"
+  - "extensionjs"
+  - "parcel-extension"
+  - "wxt"

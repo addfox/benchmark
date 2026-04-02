@@ -1,0 +1,28 @@
+{
+  "name": "benchmark-extensionjs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Benchmark case: same extension with Extension.js (React + Tailwind 3)",
+  "scripts": {
+    "dev": "extension dev --browser=chrome",
+    "build": "extension build"
+  },
+  "dependencies": {
+    "lodash": "4.17.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "webextension-polyfill": "0.10.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.326",
+    "@types/lodash": "4.17.0",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "@types/webextension-polyfill": "0.10.0",
+    "autoprefixer": "10.4.16",
+    "extension": "latest",
+    "postcss": "8.4.32",
+    "tailwindcss": "3.4.0",
+    "typescript": "~5.4.5"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "benchmark-parcel-extension",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Benchmark case: same extension with Parcel + official extension plugin (React + Tailwind 3)",
+  "scripts": {
+    "dev": "parcel watch manifest.json",
+    "build": "parcel build manifest.json"
+  },
+  "dependencies": {
+    "lodash": "4.17.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "webextension-polyfill": "0.10.0"
+  },
+  "devDependencies": {
+    "@parcel/config-default": "^2.12.0",
+    "@parcel/transformer-react-refresh-wrap": "^2.12.0",
+    "@types/chrome": "0.0.326",
+    "@types/lodash": "4.17.0",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "@types/webextension-polyfill": "0.10.0",
+    "autoprefixer": "10.4.16",
+    "parcel": "^2.12.0",
+    "postcss": "8.4.32",
+    "tailwindcss": "3.4.0",
+    "typescript": "~5.4.5"
+  }
+}
