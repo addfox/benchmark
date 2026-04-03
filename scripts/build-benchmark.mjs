@@ -1,11 +1,12 @@
 /**
  * Build 打包耗时测试脚本
- * 使用: node scripts/build-benchmark.mjs [wxt|addfox|plasmo]
+ * 使用: node scripts/build-benchmark.mjs [wxt|addfox|plasmo|extensionjs]
  * 
  * 结束匹配规则:
  * - addfox: 输出包含 "Extension size"
  * - wxt: 输出包含 "Finished in"
  * - plasmo: 输出包含 "Finished in"
+ * - extensionjs: 输出包含 "Build completed in"
  */
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -33,6 +34,12 @@ const FRAMEWORKS = {
     cwd: join(ROOT, "plasmo"),
     buildCommand: "pnpm run build",
     readyPattern: /Finished in/i,
+  },
+  extensionjs: {
+    name: "extensionjs",
+    cwd: join(ROOT, "extensionjs"),
+    buildCommand: "pnpm run build",
+    readyPattern: /Build completed in/i,
   },
 };
 
@@ -136,11 +143,12 @@ async function main() {
   const framework = process.argv[2]?.toLowerCase();
 
   if (!framework || !FRAMEWORKS[framework]) {
-    console.log("Usage: node scripts/build-benchmark.mjs [wxt|addfox|plasmo]");
+    console.log("Usage: node scripts/build-benchmark.mjs [wxt|addfox|plasmo|extensionjs]");
     console.log("\n测试各框架的 build 打包耗时:");
-    console.log("  wxt    - 匹配 'Finished in'");
-    console.log("  addfox - 匹配 'Extension size'");
-    console.log("  plasmo - 匹配 'Finished in'");
+    console.log("  wxt         - 匹配 'Finished in'");
+    console.log("  addfox      - 匹配 'Extension size'");
+    console.log("  plasmo      - 匹配 'Finished in'");
+    console.log("  extensionjs - 匹配 'Build completed in'");
     process.exit(1);
   }
 

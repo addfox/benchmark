@@ -4,7 +4,7 @@
   "private": true,
   "description": "Benchmark case: same extension with Extension.js (React + Tailwind 3)",
   "scripts": {
-    "dev": "extension dev --browser=chrome",
+    "dev": "extension dev --browser=edge",
     "build": "extension build"
   },
   "dependencies": {

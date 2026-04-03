@@ -1,11 +1,12 @@
 /**
  * Dev 启动耗时测试脚本
- * 使用: node scripts/dev-benchmark.mjs [wxt|addfox|plasmo]
+ * 使用: node scripts/dev-benchmark.mjs [wxt|addfox|plasmo|extensionjs]
  * 
  * 结束匹配规则:
  * - wxt: 输出包含 "Opened browser in"
  * - addfox: 输出包含 "extensions loaded"
  * - plasmo: 输出包含 "Extension re-packaged"
+ * - extensionjs: 输出包含 "compiled successfully"
  */
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -33,6 +34,12 @@ const FRAMEWORKS = {
     cwd: join(ROOT, "plasmo"),
     devCommand: "pnpm run dev",
     readyPattern: /Extension re-packaged/i,
+  },
+  extensionjs: {
+    name: "extensionjs",
+    cwd: join(ROOT, "extensionjs"),
+    devCommand: "pnpm run dev",
+    readyPattern: /compiled successfully|Edge Add-on ready/i,
   },
 };
 
@@ -129,11 +136,12 @@ async function main() {
   const framework = process.argv[2]?.toLowerCase();
 
   if (!framework || !FRAMEWORKS[framework]) {
-    console.log("Usage: node scripts/dev-benchmark.mjs [wxt|addfox|plasmo]");
+    console.log("Usage: node scripts/dev-benchmark.mjs [wxt|addfox|plasmo|extensionjs]");
     console.log("\n测试各框架的 dev 启动耗时:");
-    console.log("  wxt    - 匹配 'Opened browser in'");
-    console.log("  addfox - 匹配 'extensions loaded'");
-    console.log("  plasmo - 匹配 'Extension re-packaged'");
+    console.log("  wxt         - 匹配 'Opened browser in'");
+    console.log("  addfox      - 匹配 'extensions loaded'");
+    console.log("  plasmo      - 匹配 'Extension re-packaged'");
+    console.log("  extensionjs - 匹配 'compiled successfully'");
     process.exit(1);
   }
 

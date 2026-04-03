@@ -6,16 +6,7 @@ settings:
 
 overrides:
   addfox: file:addfox/.yalc/addfox
-  '@addfox/cli': file:addfox/.yalc/@addfox/cli
-  '@addfox/core': file:addfox/.yalc/@addfox/core
-  '@addfox/common': file:addfox/.yalc/@addfox/common
   '@addfox/utils': file:addfox/.yalc/@addfox/utils
-  '@addfox/pkg-manager': file:addfox/.yalc/@addfox/pkg-manager
-  '@addfox/rsbuild-plugin-extension-entry': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry
-  '@addfox/rsbuild-plugin-extension-manifest': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest
-  '@addfox/rsbuild-plugin-extension-hmr': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr
-  '@addfox/rsbuild-plugin-extension-monitor': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor
-  '@addfox/rsbuild-plugin-vue': file:addfox/.yalc/@addfox/rsbuild-plugin-vue
 
 importers:
 
@@ -27,30 +18,6 @@ importers:
 
   addfox:
     dependencies:
-      '@addfox/common':
-        specifier: file:.yalc/@addfox/common
-        version: file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
-      '@addfox/core':
-        specifier: file:.yalc/@addfox/core
-        version: file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
-      '@addfox/pkg-manager':
-        specifier: file:.yalc/@addfox/pkg-manager
-        version: file:addfox/.yalc/@addfox/pkg-manager
-      '@addfox/rsbuild-plugin-extension-entry':
-        specifier: file:.yalc/@addfox/rsbuild-plugin-extension-entry
-        version: file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-extension-hmr':
-        specifier: file:.yalc/@addfox/rsbuild-plugin-extension-hmr
-        version: file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(jiti@2.6.1)
-      '@addfox/rsbuild-plugin-extension-manifest':
-        specifier: file:.yalc/@addfox/rsbuild-plugin-extension-manifest
-        version: file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-extension-monitor':
-        specifier: file:.yalc/@addfox/rsbuild-plugin-extension-monitor
-        version: file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-vue':
-        specifier: file:.yalc/@addfox/rsbuild-plugin-vue
-        version: file:addfox/.yalc/@addfox/rsbuild-plugin-vue(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4)
       '@addfox/utils':
         specifier: file:.yalc/@addfox/utils
         version: file:addfox/.yalc/@addfox/utils(@rsbuild/core@1.7.4)
@@ -67,9 +34,6 @@ importers:
         specifier: 0.10.0
         version: 0.10.0
     devDependencies:
-      '@addfox/cli':
-        specifier: file:.yalc/@addfox/cli
-        version: file:addfox/.yalc/@addfox/cli(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4)
       '@rsbuild/plugin-react':
         specifier: ^1.4.6
         version: 1.4.6(@rsbuild/core@1.7.4)
@@ -299,51 +263,51 @@ packages:
   '@1natsu/wait-element@4.1.2':
     resolution: {integrity: sha512-qWxSJD+Q5b8bKOvESFifvfZ92DuMsY+03SBNjTO34ipJLP6mZ9yK4bQz/vlh48aEQXoJfaZBqUwKL5BdI5iiWw==}
 
-  '@addfox/cli@file:addfox/.yalc/@addfox/cli':
-    resolution: {directory: addfox/.yalc/@addfox/cli, type: directory}
+  '@addfox/cli@0.1.1-beta.12':
+    resolution: {integrity: sha512-4lTJPMEZSvE15cSq8HYn2yremTJmZtw7kfEPW0naKwe2n+uiqBhL7jzqJmvVapABLr9ijKEf0KV7+z/0E3ibkA==}
     hasBin: true
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
 
-  '@addfox/common@file:addfox/.yalc/@addfox/common':
-    resolution: {directory: addfox/.yalc/@addfox/common, type: directory}
+  '@addfox/common@0.1.1-beta.10':
+    resolution: {integrity: sha512-QmfiKltyGFhWvltRvJf/3tNftJ7csM96PIzLdBEFkjbKwK9C7ZXj/Fm4iHyr8uMo1FEZjm+4LAj6Mk2Cz4CVtg==}
     peerDependencies:
       '@rsbuild/core': ^1.0.0
 
-  '@addfox/core@file:addfox/.yalc/@addfox/core':
-    resolution: {directory: addfox/.yalc/@addfox/core, type: directory}
+  '@addfox/core@0.1.1-beta.10':
+    resolution: {integrity: sha512-blb6FdiAsbdDVwLQGJ/wQfV7szYXDcPK7gFt1Yfpyu4HmnvWR7GkbYz2izqBEj20kQHJ80mbL+Q/DNAL79evCA==}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
 
-  '@addfox/pkg-manager@file:addfox/.yalc/@addfox/pkg-manager':
-    resolution: {directory: addfox/.yalc/@addfox/pkg-manager, type: directory}
+  '@addfox/pkg-manager@0.1.1-beta.9':
+    resolution: {integrity: sha512-W2TmGDLMZ2mRB2EYBpBkQQhnHtOcYD+RMf3SwJsybyAUsl5yw0VPFbvle23WqVpvtYLWs05JJ+rTJ3kqY1QQ+w==}
 
-  '@addfox/rsbuild-plugin-extension-entry@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry':
-    resolution: {directory: addfox/.yalc/@addfox/rsbuild-plugin-extension-entry, type: directory}
-    peerDependencies:
-      '@rsbuild/core': '>=1.0.0'
-      '@rspack/core': '>=1.0.0'
-
-  '@addfox/rsbuild-plugin-extension-hmr@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr':
-    resolution: {directory: addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr, type: directory}
+  '@addfox/rsbuild-plugin-extension-entry@0.1.1-beta.11':
+    resolution: {integrity: sha512-BlTqmRNO4Z8wT9Oa5haDRvDFjA1t3P7X1wEiEtk4gqZTVkA/gzI6I5sa/a40eChg0bVsq66MIH3/94VEch588w==}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
       '@rspack/core': '>=1.0.0'
 
-  '@addfox/rsbuild-plugin-extension-manifest@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest':
-    resolution: {directory: addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest, type: directory}
+  '@addfox/rsbuild-plugin-extension-hmr@0.1.1-beta.10':
+    resolution: {integrity: sha512-8S7tRcFQPfTqIcks3lYwjmFiC1wC6pylxGgeEZW47+aCBkW3j3j+1sia4aglAcMNKdSnLisKj9NDP2HwlPsZ4g==}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
       '@rspack/core': '>=1.0.0'
 
-  '@addfox/rsbuild-plugin-extension-monitor@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor':
-    resolution: {directory: addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor, type: directory}
+  '@addfox/rsbuild-plugin-extension-manifest@0.1.1-beta.10':
+    resolution: {integrity: sha512-WHMZE8dAnWTylh+808U+fK2ebjbX3Sn2SXttSCj4IO2AH7DBtm9dUpN3U/nPx8Q+WWtfo/QEtkH0nATsKzfoMw==}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
       '@rspack/core': '>=1.0.0'
 
-  '@addfox/rsbuild-plugin-vue@file:addfox/.yalc/@addfox/rsbuild-plugin-vue':
-    resolution: {directory: addfox/.yalc/@addfox/rsbuild-plugin-vue, type: directory}
+  '@addfox/rsbuild-plugin-extension-monitor@0.1.1-beta.10':
+    resolution: {integrity: sha512-672VWtIaUu9RgeBa9YP8cnKEPBeWmn+0e/hIv3WavB8OZuXCQY5ixwevzTcqzbiLh5xF0OR0V8rDpGPi0Z+qog==}
+    peerDependencies:
+      '@rsbuild/core': '>=1.0.0'
+      '@rspack/core': '>=1.0.0'
+
+  '@addfox/rsbuild-plugin-vue@0.1.1-beta.8':
+    resolution: {integrity: sha512-P5A/cE8OFRsb6LdhLk2Yb5bh2rj5l2ielpGIql+1Cc8SDG/tqCqiWLmtm4sbdMyfavcuIVjPeHqAaAfw++cqKA==}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
       '@rsbuild/plugin-babel': '>=1.0.0'
@@ -7040,16 +7004,16 @@ snapshots:
       defu: 6.1.4
       many-keys-map: 2.0.1
 
-  '@addfox/cli@file:addfox/.yalc/@addfox/cli(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4)':
+  '@addfox/cli@0.1.1-beta.12(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4)':
     dependencies:
-      '@addfox/common': file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
-      '@addfox/pkg-manager': file:addfox/.yalc/@addfox/pkg-manager
-      '@addfox/rsbuild-plugin-extension-entry': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-extension-hmr': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(jiti@2.6.1)
-      '@addfox/rsbuild-plugin-extension-manifest': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-extension-monitor': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
-      '@addfox/rsbuild-plugin-vue': file:addfox/.yalc/@addfox/rsbuild-plugin-vue(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4)
+      '@addfox/common': 0.1.1-beta.10(@rsbuild/core@1.7.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
+      '@addfox/pkg-manager': 0.1.1-beta.9
+      '@addfox/rsbuild-plugin-extension-entry': 0.1.1-beta.11(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
+      '@addfox/rsbuild-plugin-extension-hmr': 0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(jiti@2.6.1)
+      '@addfox/rsbuild-plugin-extension-manifest': 0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
+      '@addfox/rsbuild-plugin-extension-monitor': 0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
+      '@addfox/rsbuild-plugin-vue': 0.1.1-beta.8(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4)
       '@rsbuild/core': 1.7.4
       '@rspack/core': 1.7.10(@swc/helpers@0.5.20)
       archiver: 7.0.1
@@ -7071,29 +7035,29 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@addfox/common@file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)':
+  '@addfox/common@0.1.1-beta.10(@rsbuild/core@1.7.4)':
     dependencies:
       '@rsbuild/core': 1.7.4
 
-  '@addfox/core@file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)':
+  '@addfox/core@0.1.1-beta.10(@rsbuild/core@1.7.4)':
     dependencies:
-      '@addfox/common': file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
+      '@addfox/common': 0.1.1-beta.10(@rsbuild/core@1.7.4)
       '@rsbuild/core': 1.7.4
       cli-table3: 0.6.5
       jiti: 2.6.1
 
-  '@addfox/pkg-manager@file:addfox/.yalc/@addfox/pkg-manager': {}
+  '@addfox/pkg-manager@0.1.1-beta.9': {}
 
-  '@addfox/rsbuild-plugin-extension-entry@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
+  '@addfox/rsbuild-plugin-extension-entry@0.1.1-beta.11(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
     dependencies:
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
       '@rsbuild/core': 1.7.4
       '@rspack/core': 1.7.10(@swc/helpers@0.5.20)
 
-  '@addfox/rsbuild-plugin-extension-hmr@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(jiti@2.6.1)':
+  '@addfox/rsbuild-plugin-extension-hmr@0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(jiti@2.6.1)':
     dependencies:
-      '@addfox/common': file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
+      '@addfox/common': 0.1.1-beta.10(@rsbuild/core@1.7.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
       '@rsbuild/core': 1.7.4
       '@rspack/core': 1.7.10(@swc/helpers@0.5.20)
       chrome-launcher: 1.2.0
@@ -7109,20 +7073,20 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@addfox/rsbuild-plugin-extension-manifest@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
+  '@addfox/rsbuild-plugin-extension-manifest@0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
     dependencies:
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
       '@rsbuild/core': 1.7.4
       '@rspack/core': 1.7.10(@swc/helpers@0.5.20)
 
-  '@addfox/rsbuild-plugin-extension-monitor@file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
+  '@addfox/rsbuild-plugin-extension-monitor@0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))':
     dependencies:
-      '@addfox/common': file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
+      '@addfox/common': 0.1.1-beta.10(@rsbuild/core@1.7.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
       '@rsbuild/core': 1.7.4
       '@rspack/core': 1.7.10(@swc/helpers@0.5.20)
 
-  '@addfox/rsbuild-plugin-vue@file:addfox/.yalc/@addfox/rsbuild-plugin-vue(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4)':
+  '@addfox/rsbuild-plugin-vue@0.1.1-beta.8(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4)':
     dependencies:
       '@rsbuild/core': 1.7.4
       '@rsbuild/plugin-babel': 1.1.2(@rsbuild/core@1.7.4)
@@ -7135,7 +7099,7 @@ snapshots:
 
   '@addfox/utils@file:addfox/.yalc/@addfox/utils(@rsbuild/core@1.7.4)':
     dependencies:
-      '@addfox/common': file:addfox/.yalc/@addfox/common(@rsbuild/core@1.7.4)
+      '@addfox/common': 0.1.1-beta.10(@rsbuild/core@1.7.4)
     transitivePeerDependencies:
       - '@rsbuild/core'
 
@@ -10623,9 +10587,9 @@ snapshots:
 
   addfox@file:addfox/.yalc/addfox(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4):
     dependencies:
-      '@addfox/cli': file:addfox/.yalc/@addfox/cli(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4)
-      '@addfox/core': file:addfox/.yalc/@addfox/core(@rsbuild/core@1.7.4)
-      '@addfox/rsbuild-plugin-extension-monitor': file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
+      '@addfox/cli': 0.1.1-beta.12(@rsbuild/core@1.7.4)(@rsbuild/plugin-babel@1.1.2(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue-jsx@1.1.2(@babel/core@7.29.0)(@rsbuild/core@1.7.4))(@rsbuild/plugin-vue@1.2.7(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))(@vue/compiler-sfc@3.5.31)(vue@3.3.4))(@swc/helpers@0.5.20)(@vue/compiler-sfc@3.5.31)(jiti@2.6.1)(vue@3.3.4)
+      '@addfox/core': 0.1.1-beta.10(@rsbuild/core@1.7.4)
+      '@addfox/rsbuild-plugin-extension-monitor': 0.1.1-beta.10(@rsbuild/core@1.7.4)(@rspack/core@1.7.10(@swc/helpers@0.5.20))
     transitivePeerDependencies:
       - '@rsbuild/core'
       - '@rsbuild/plugin-babel'

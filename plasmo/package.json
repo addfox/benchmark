@@ -4,7 +4,7 @@
   "private": true,
   "description": "Benchmark case: same extension with Plasmo (React + Tailwind 3)",
   "scripts": {
-    "dev": "plasmo dev",
+    "dev": "plasmo dev --target=edge",
     "build": "plasmo build"
   },
   "dependencies": {

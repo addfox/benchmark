@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Benchmark dev (command start → ready/browser) and build (time + output size) for addfox, plasmo, extension.js, parcel-extension, wxt",
+  "description": "Benchmark dev (command start → ready/browser) and build (time + output size) for addfox, wxt, plasmo, extensionjs",
   "scripts": {
     "benchmark": "node scripts/benchmark.mjs",
     "benchmark:dev": "node scripts/benchmark.mjs --dev-only",
@@ -12,9 +12,11 @@
     "test:wxt": "node scripts/dev-benchmark.mjs wxt",
     "test:addfox": "node scripts/dev-benchmark.mjs addfox",
     "test:plasmo": "node scripts/dev-benchmark.mjs plasmo",
+    "test:extensionjs": "node scripts/dev-benchmark.mjs extensionjs",
     "build:wxt": "node scripts/build-benchmark.mjs wxt",
     "build:addfox": "node scripts/build-benchmark.mjs addfox",
-    "build:plasmo": "node scripts/build-benchmark.mjs plasmo"
+    "build:plasmo": "node scripts/build-benchmark.mjs plasmo",
+    "build:extensionjs": "node scripts/build-benchmark.mjs extensionjs"
   },
   "devDependencies": {
     "picocolors": "^1.1.1"
@@ -23,16 +25,7 @@
   "pnpm": {
     "overrides": {
       "addfox": "file:addfox/.yalc/addfox",
-      "@addfox/cli": "file:addfox/.yalc/@addfox/cli",
-      "@addfox/core": "file:addfox/.yalc/@addfox/core",
-      "@addfox/common": "file:addfox/.yalc/@addfox/common",
-      "@addfox/utils": "file:addfox/.yalc/@addfox/utils",
-      "@addfox/pkg-manager": "file:addfox/.yalc/@addfox/pkg-manager",
-      "@addfox/rsbuild-plugin-extension-entry": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-entry",
-      "@addfox/rsbuild-plugin-extension-manifest": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-manifest",
-      "@addfox/rsbuild-plugin-extension-hmr": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-hmr",
-      "@addfox/rsbuild-plugin-extension-monitor": "file:addfox/.yalc/@addfox/rsbuild-plugin-extension-monitor",
-      "@addfox/rsbuild-plugin-vue": "file:addfox/.yalc/@addfox/rsbuild-plugin-vue"
+      "@addfox/utils": "file:addfox/.yalc/@addfox/utils"
     }
   }
 }

@@ -1,72 +1,151 @@
-# Extension build benchmark
+# Extension Build Benchmark
 
-参考 [rstackjs/build-tools-performance](https://github.com/rstackjs/build-tools-performance)，本仓库为 **workspace 仓库**，对以下四种构建方案实现**功能完全一致**的同一款扩展，用于对比 **dev 启动时间** 与 **build 时间/产物大小**。
+This repository benchmarks four browser extension frameworks by building the **same extension** with identical functionality. The goal is to compare **dev startup time**, **build time**, and **output size**.
 
-## 方案
+Reference: [rstackjs/build-tools-performance](https://github.com/rstackjs/build-tools-performance)
 
-| 目录 | 框架 | 说明 |
-|------|------|------|
-| `addfox/` | Addfox | 使用 addfox + Rsbuild（`addfox.config.ts`、`defineConfig` + `pluginReact`） |
-| `plasmo/` | Plasmo | 使用 Plasmo |
-| `extensionjs/` | Extension.js | 使用 Extension.js |
-| `parcel-extension/` | Parcel | 使用 Parcel 官方 extension 插件 |
+## Frameworks
 
-## 统一依赖
+| Directory | Framework | Description |
+|-----------|-----------|-------------|
+| `addfox/` | Addfox | Rsbuild-based framework (`addfox.config.ts`, `defineConfig` + `pluginReact`) |
+| `wxt/` | WXT | WXT framework |
+| `plasmo/` | Plasmo | Plasmo framework |
+| `extensionjs/` | Extension.js | Extension.js framework |
 
-除各框架本身及其必需插件外，**所有库的名称与版本必须一致**，避免因依赖差异影响对比。版本以 [SHARED_DEPS.md](./SHARED_DEPS.md) 为准，四个子包的 `package.json` 已按该表对齐（生产依赖：lodash、react、react-dom、webextension-polyfill；开发依赖：@types/*、autoprefixer、postcss、tailwindcss、typescript 等）。
+## Benchmark Results
 
-## 统一技术栈与功能
+### Environment
 
-- **技术栈**：React + Tailwind CSS 3，统一依赖（含 lodash）
-- **入口**：background, content, options, popup, sidepanel, devtools, space（自定义）
-- **功能**：
-  - Popup：点击截取当前页截图
-  - Sidepanel：假 AI 聊天（固定回复）
-  - DevTools：展示当前页捕获到的所有元素颜色
-  - Space：展示已截图片（临时存储）
-  - Options：常用设置 UI（语言、功能限制、权限等，可假数据）
-- **资源**：图标统一使用 VideoRoll-Pro 的 icon（所有尺寸），i18n 使用 `_locales`（en / zh_CN）
+- **OS**: Windows
+- **Browser**: Microsoft Edge
+- **Node.js**: 20+
+- **Package Manager**: pnpm 10.0.0
+- **Test Method**: 5 runs per framework, averaged
 
-## 时间埋点
+### Dev Startup Time
 
-- **Dev**：从执行 `dev` 命令开始，到开发服务器就绪（或浏览器启动）的时间。
-- **Build**：执行 `build` 的耗时，以及构建产物的总大小（不含 dev）。
+Time from running `dev` command to dev server ready (browser opened):
 
-## 使用
+| Framework | Average | Min | Max | Runs |
+|-----------|---------|-----|-----|------|
+| **Addfox** | 2.04s | 1.95s | 2.19s | 2.19, 2.01, 1.95, 2.00, 2.05 |
+| **Extension.js** | 2.34s | 1.95s | 2.75s | 1.95, 2.21, 2.75, 2.35, 2.46 |
+| **WXT** | 2.36s | 2.31s | 2.40s | 2.40, 2.35, 2.39, 2.33, 2.31 |
+| **Plasmo** | 3.39s | 3.31s | 3.57s | 3.34, 3.38, 3.36, 3.57, 3.31 |
 
-1. 安装依赖（在 benchmark 仓库根目录；首次加入或升级 addfox 时需更新 lockfile）：
-   ```bash
-   pnpm install --no-frozen-lockfile
-   ```
+### Build Time
 
-2. 复制图标（需已存在 VideoRoll-Pro 仓库）：
-   ```bash
-   cd benchmark && node scripts/copy-icons.mjs
-   ```
+Time to complete production build:
 
-3. 运行 benchmark：
-   ```bash
-   cd benchmark && pnpm run benchmark
-   ```
-   - 仅 dev：`pnpm run benchmark:dev`
-   - 仅 build：`pnpm run benchmark:build`
+| Framework | Average | Min | Max | Runs |
+|-----------|---------|-----|-----|------|
+| **Addfox** | 1.51s | 1.47s | 1.67s | 1.67, 1.48, 1.47, 1.48, 1.47 |
+| **Extension.js** | 1.57s | 1.55s | 1.60s | 1.60, 1.56, 1.59, 1.55, 1.57 |
+| **WXT** | 1.95s | 1.92s | 1.98s | 1.98, 1.92, 1.97, 1.92, 1.94 |
+| **Plasmo** | 2.80s | 2.76s | 2.94s | 2.94, 2.76, 2.77, 2.78, 2.76 |
 
-## 目录结构
+### Build Output Size
+
+| Framework | Size |
+|-----------|------|
+| **WXT** | 832 KB |
+| **Addfox** | 840 KB |
+| **Plasmo** | 1,365 KB |
+| **Extension.js** | 1,859 KB |
+
+## Summary
+
+| Framework | Dev Startup | Build Time | Output Size |
+|-----------|-------------|------------|-------------|
+| **Addfox** | 🥇 2.04s | 🥇 1.51s | 🥈 840 KB |
+| **Extension.js** | 🥈 2.34s | 🥈 1.57s | 4th 1,859 KB |
+| **WXT** | 🥉 2.36s | 🥉 1.95s | 🥇 832 KB |
+| **Plasmo** | 4th 3.39s | 4th 2.80s | 🥉 1,365 KB |
+
+## Unified Tech Stack
+
+- **Framework**: React + Tailwind CSS 3
+- **Dependencies**: lodash, react, react-dom, webextension-polyfill
+- **Entry Points**: background, content, options, popup, sidepanel, devtools, space (custom)
+- **Features**:
+  - Popup: Capture screenshot of current page
+  - Sidepanel: Fake AI chat (fixed responses)
+  - DevTools: Display captured element colors
+  - Space: Display captured screenshots (temporary storage)
+  - Options: Common settings UI (language, limits, permissions)
+- **Resources**: Icons from VideoRoll-Pro, i18n via `_locales` (en / zh_CN)
+
+## Usage
+
+### 1. Install Dependencies
+
+```bash
+pnpm install --no-frozen-lockfile
+```
+
+### 2. Copy Icons
+
+Requires VideoRoll-Pro repository:
+
+```bash
+pnpm run copy-icons
+```
+
+### 3. Run Individual Tests
+
+**Dev startup time:**
+
+```bash
+pnpm run test:addfox
+pnpm run test:wxt
+pnpm run test:plasmo
+pnpm run test:extensionjs
+```
+
+**Build time:**
+
+```bash
+pnpm run build:addfox
+pnpm run build:wxt
+pnpm run build:plasmo
+pnpm run build:extensionjs
+```
+
+### 4. Batch Benchmark (5 runs with average)
+
+```bash
+# Dev benchmark
+node scripts/run-benchmark-suite.mjs dev
+
+# Build benchmark
+node scripts/run-benchmark-suite.mjs build
+```
+
+## Directory Structure
 
 ```
 benchmark/
-├── package.json          # 根脚本：benchmark, copy-icons
-├── pnpm-workspace.yaml   # 子包：addfox, plasmo, extensionjs, parcel-extension
+├── package.json               # Root scripts: copy-icons, test:*, build:*
+├── pnpm-workspace.yaml        # Workspaces: addfox, wxt, plasmo, extensionjs
 ├── scripts/
-│   ├── benchmark.mjs     # 测速脚本（dev 时长 + build 时长与体积）
-│   └── copy-icons.mjs    # 从 VideoRoll-Pro 复制图标到各包 public/icons
+│   ├── dev-benchmark.mjs      # Dev startup time benchmark
+│   ├── build-benchmark.mjs    # Build time benchmark
+│   ├── run-benchmark-suite.mjs # 5-run benchmark suite with averages
+│   ├── batch-benchmark.mjs    # Batch test all frameworks
+│   └── copy-icons.mjs         # Copy icons from VideoRoll-Pro
 ├── shared/
-│   ├── icons/            # 复制后的图标（及各包 public/icons）
-│   └── locales/          # 参考 i18n 文案
-├── addfox/               # Addfox 实现
-├── plasmo/                # Plasmo 实现
-├── extensionjs/          # Extension.js 实现
-└── parcel-extension/     # Parcel 实现
+│   ├── icons/                 # Shared icons
+│   └── locales/               # i18n reference
+├── addfox/                    # Addfox implementation
+├── wxt/                       # WXT implementation
+├── plasmo/                    # Plasmo implementation
+└── extensionjs/               # Extension.js implementation
 ```
 
-- **addfox** 已实现完整功能与埋点；**plasmo / extensionjs / parcel-extension** 当前为占位包，需按同一功能与资源自行实现后再跑全量 benchmark。
+## Implementation Status
+
+- ✅ **Addfox**: Fully implemented with all features
+- ✅ **WXT**: Fully implemented with all features
+- ✅ **Extension.js**: Fully implemented with all features
+- ⚠️ **Plasmo**: Placeholder - needs implementation

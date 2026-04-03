@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Benchmark case: same extension with WXT (React + Tailwind 3)",
   "scripts": {
-    "dev": "wxt",
+    "dev": "wxt --browser edge",
     "build": "wxt build"
   },
   "dependencies": {

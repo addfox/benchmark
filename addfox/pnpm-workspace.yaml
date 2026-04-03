@@ -1,0 +1,7 @@
+# Pnpm workspace configuration
+# Links to addfox monorepo packages
+
+packages:
+  - '.'
+  - '../../../addfox/packages/*'
+  - '../../../addfox/packages/plugins/*'
