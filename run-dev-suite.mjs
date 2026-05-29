@@ -55,7 +55,7 @@ async function testFramework(framework) {
   
   const times = [];
   
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 8; i++) {
     console.log(`\nRun ${i}/5...`);
     await killProcesses();
     await new Promise(r => setTimeout(r, 2000));
@@ -91,14 +91,14 @@ async function main() {
   const results = {};
   
   console.log("🏁 DEV Benchmark Suite (Edge Browser)");
-  console.log("5 runs per framework\n");
+  console.log("8 runs per framework\n");
   
   for (const fw of frameworks) {
     results[fw] = await testFramework(fw);
   }
   
   console.log("\n" + "=".repeat(70));
-  console.log("DEV RESULTS - Edge Browser (Average of 5 runs)");
+  console.log("DEV RESULTS - Edge Browser (Average of 8 runs)");
   console.log("=".repeat(70));
   console.log("Framework    | Avg (s) | Min (s) | Max (s) | All Times");
   console.log("-".repeat(70));

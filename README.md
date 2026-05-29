@@ -21,21 +21,21 @@ Reference: [rstackjs/build-tools-performance](https://github.com/rstackjs/build-
 - **Browser**: Microsoft Edge
 - **Node.js**: 24.16.0
 - **Package Manager**: pnpm 10.0.0
-- **Test Method**: 5 runs per framework, averaged (warm-up run before each suite to eliminate cold-start bias)
+- **Test Method**: 8 runs per framework, averaged (warm-up run before each suite to eliminate cold-start bias)
 - **Last Updated**: 2026-05-29
 
 ### Dev Startup Time
 
 Time from running `dev` command to dev server ready (including browser launch and extension installation where applicable):
 
-> **Note:** All frameworks automatically open the browser and install the extension during dev. Each framework was tested with 5 runs after a warm-up run to eliminate cold-start bias.
+> **Note:** All frameworks automatically open the browser and install the extension during dev. Each framework was tested with 8 runs after a warm-up run to eliminate cold-start bias.
 
 | Framework | Average | Min | Max | Runs |
 |-----------|---------|-----|-----|------|
-| **Extension.js** | 2.10s | 2.07s | 2.13s | 2.07, 2.10, 2.13, 2.12, 2.10 |
-| **WXT** | 2.18s | 2.07s | 2.46s | 2.46, 2.15, 2.11, 2.07, 2.09 |
-| **Addfox** | 2.41s | 2.33s | 2.64s | 2.36, 2.33, 2.64, 2.35, 2.35 |
-| **Plasmo** | 3.02s | 2.99s | 3.05s | 3.01, 3.01, 3.05, 3.03, 2.99 |
+| **Extension.js** | 2.13s | 2.08s | 2.20s | 2.12, 2.08, 2.17, 2.20, 2.08, 2.10, 2.10, 2.19 |
+| **WXT** | 2.13s | 2.09s | 2.19s | 2.14, 2.11, 2.09, 2.12, 2.12, 2.19, 2.15, 2.12 |
+| **Addfox** | 2.39s | 2.32s | 2.52s | 2.48, 2.42, 2.52, 2.34, 2.33, 2.32, 2.34, 2.35 |
+| **Plasmo** | 3.04s | 3.02s | 3.08s | 3.08, 3.04, 3.03, 3.03, 3.04, 3.04, 3.05, 3.02 |
 
 ### Build Time
 
@@ -43,10 +43,10 @@ Time to complete production build (total time from running the command to build 
 
 | Framework | Average | Min | Max | Runs |
 |-----------|---------|-----|-----|------|
-| **Addfox** | 1.44s | 1.43s | 1.45s | 1.43, 1.44, 1.43, 1.45, 1.45 |
-| **Extension.js** | 1.52s | 1.51s | 1.54s | 1.54, 1.52, 1.52, 1.51, 1.52 |
-| **WXT** | 1.82s | 1.80s | 1.83s | 1.82, 1.83, 1.82, 1.83, 1.80 |
-| **Plasmo** | 2.62s | 2.58s | 2.69s | 2.69, 2.65, 2.58, 2.58, 2.61 |
+| **Addfox** | 1.47s | 1.43s | 1.55s | 1.55, 1.54, 1.45, 1.46, 1.43, 1.45, 1.46, 1.44 |
+| **Extension.js** | 1.53s | 1.51s | 1.55s | 1.54, 1.51, 1.52, 1.53, 1.52, 1.54, 1.55, 1.52 |
+| **WXT** | 1.83s | 1.82s | 1.85s | 1.85, 1.82, 1.84, 1.83, 1.85, 1.82, 1.83, 1.82 |
+| **Plasmo** | 2.63s | 2.58s | 2.68s | 2.68, 2.60, 2.63, 2.58, 2.68, 2.59, 2.67, 2.64 |
 
 ### Build Output Size
 
@@ -65,10 +65,10 @@ Production build output (excluding source maps):
 
 | Framework | Version | Dev Startup | Build Time | Output Size |
 |-----------|---------|-------------|------------|-------------|
-| **Extension.js** | 3.17.0 | 🥇 2.10s | 🥈 1.52s | 🥉 1.45 MB |
-| **WXT** | 0.20.26 | 🥈 2.18s | 🥉 1.82s | 🥇 812 KB |
-| **Addfox** | 0.2.0 | 🥉 2.41s | 🥇 1.44s | 🥈 837 KB |
-| **Plasmo** | 0.90.5 | 4th 3.02s | 4th 2.62s | 4th 1.36 MB |
+| **Extension.js** | 3.17.0 | 🥇 2.13s | 🥈 1.53s | 🥉 1.45 MB |
+| **WXT** | 0.20.26 | 🥇 2.13s | 🥉 1.83s | 🥇 812 KB |
+| **Addfox** | 0.2.0 | 🥉 2.39s | 🥇 1.47s | 🥈 837 KB |
+| **Plasmo** | 0.90.5 | 4th 3.04s | 4th 2.63s | 4th 1.36 MB |
 
 ## Unified Tech Stack
 
@@ -119,7 +119,7 @@ pnpm run build:plasmo
 pnpm run build:extensionjs
 ```
 
-### 4. Batch Benchmark (5 runs with average)
+### 4. Batch Benchmark (8 runs with average)
 
 ```bash
 # Dev benchmark

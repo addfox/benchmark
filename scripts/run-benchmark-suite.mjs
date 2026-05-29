@@ -13,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
 const FRAMEWORKS = ["addfox", "wxt", "extensionjs", "plasmo"];
-const RUNS = 5;
+const RUNS = 8;
 
 function killBrowserProcesses() {
   return new Promise((resolve) => {
