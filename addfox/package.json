@@ -10,15 +10,18 @@
     "link:addfox": "node scripts/link-addfox.mjs"
   },
   "dependencies": {
-    "@addfox/cli": "link:..\\..\\addfox\\packages\\cli",
-    "@addfox/common": "link:..\\..\\addfox\\packages\\common",
-    "@addfox/core": "link:..\\..\\addfox\\packages\\core",
-    "@addfox/rsbuild-plugin-extension-entry": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-entry",
-    "@addfox/rsbuild-plugin-extension-hmr": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-hmr",
-    "@addfox/rsbuild-plugin-extension-manifest": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-manifest",
-    "@addfox/rsbuild-plugin-extension-monitor": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-monitor",
-    "@addfox/rsbuild-plugin-vue": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-vue",
-    "@addfox/utils": "workspace:*",
+    "@addfox/cli": "link:../../addfox/packages/cli",
+    "@addfox/common": "link:../../addfox/packages/common",
+    "@addfox/core": "link:../../addfox/packages/core",
+    "@addfox/launcher": "link:../../addfox/packages/launcher",
+    "@addfox/pkg-manager": "link:../../addfox/packages/pkg-manager",
+    "@addfox/rsbuild-plugin-extension-entry": "link:../../addfox/packages/plugins/rsbuild-plugin-extension-entry",
+    "@addfox/rsbuild-plugin-extension-hmr": "link:../../addfox/packages/plugins/rsbuild-plugin-extension-hmr",
+    "@addfox/rsbuild-plugin-extension-manifest": "link:../../addfox/packages/plugins/rsbuild-plugin-extension-manifest",
+    "@addfox/rsbuild-plugin-extension-monitor": "link:../../addfox/packages/plugins/rsbuild-plugin-extension-monitor",
+    "@addfox/rsbuild-plugin-vue": "link:../../addfox/packages/plugins/rsbuild-plugin-vue",
+    "@addfox/utils": "link:../../addfox/packages/utils",
+    "addfox": "link:../../addfox/packages/addfox",
     "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -31,24 +34,9 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "@types/webextension-polyfill": "0.10.0",
-    "addfox": "workspace:*",
     "autoprefixer": "10.4.16",
     "postcss": "8.4.32",
     "tailwindcss": "3.4.0",
     "typescript": "~5.4.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "addfox": "link:..\\..\\addfox\\packages\\addfox",
-      "@addfox/utils": "link:..\\..\\addfox\\packages\\utils",
-      "@addfox/core": "link:..\\..\\addfox\\packages\\core",
-      "@addfox/common": "link:..\\..\\addfox\\packages\\common",
-      "@addfox/cli": "link:..\\..\\addfox\\packages\\cli",
-      "@addfox/rsbuild-plugin-extension-entry": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-entry",
-      "@addfox/rsbuild-plugin-extension-hmr": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-hmr",
-      "@addfox/rsbuild-plugin-extension-manifest": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-manifest",
-      "@addfox/rsbuild-plugin-extension-monitor": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-monitor",
-      "@addfox/rsbuild-plugin-vue": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-vue"
-    }
   }
 }

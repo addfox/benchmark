@@ -6,12 +6,12 @@ Reference: [rstackjs/build-tools-performance](https://github.com/rstackjs/build-
 
 ## Frameworks
 
-| Directory | Framework | Description |
-|-----------|-----------|-------------|
-| `addfox/` | Addfox | Rsbuild-based framework (`addfox.config.ts`, `defineConfig` + `pluginReact`) |
-| `wxt/` | WXT | WXT framework |
-| `plasmo/` | Plasmo | Plasmo framework |
-| `extensionjs/` | Extension.js | Extension.js framework |
+| Directory | Framework | Version | Bundler | Description |
+|-----------|-----------|---------|---------|-------------|
+| `addfox/` | Addfox | 0.2.0 | Rsbuild 2.0.7 | Rsbuild-based framework (`addfox.config.ts`, `defineConfig` + `pluginReact`) |
+| `wxt/` | WXT | 0.20.26 | Vite 8.0.14 | WXT framework |
+| `plasmo/` | Plasmo | 0.90.5 | Parcel 2.9.3 | Plasmo framework |
+| `extensionjs/` | Extension.js | 3.17.0 | Rspack 2.0.x | Extension.js framework |
 
 ## Benchmark Results
 
@@ -19,49 +19,56 @@ Reference: [rstackjs/build-tools-performance](https://github.com/rstackjs/build-
 
 - **OS**: Windows
 - **Browser**: Microsoft Edge
-- **Node.js**: 20+
+- **Node.js**: 24.16.0
 - **Package Manager**: pnpm 10.0.0
-- **Test Method**: 5 runs per framework, averaged
+- **Test Method**: 5 runs per framework, averaged (warm-up run before each suite to eliminate cold-start bias)
+- **Last Updated**: 2026-05-29
 
 ### Dev Startup Time
 
-Time from running `dev` command to dev server ready (browser opened):
+Time from running `dev` command to dev server ready (including browser launch and extension installation where applicable):
+
+> **Note:** All frameworks automatically open the browser and install the extension during dev. Each framework was tested with 5 runs after a warm-up run to eliminate cold-start bias.
 
 | Framework | Average | Min | Max | Runs |
 |-----------|---------|-----|-----|------|
-| **Addfox** | 2.04s | 1.95s | 2.19s | 2.19, 2.01, 1.95, 2.00, 2.05 |
-| **Extension.js** | 2.34s | 1.95s | 2.75s | 1.95, 2.21, 2.75, 2.35, 2.46 |
-| **WXT** | 2.36s | 2.31s | 2.40s | 2.40, 2.35, 2.39, 2.33, 2.31 |
-| **Plasmo** | 3.39s | 3.31s | 3.57s | 3.34, 3.38, 3.36, 3.57, 3.31 |
+| **Extension.js** | 2.10s | 2.07s | 2.13s | 2.07, 2.10, 2.13, 2.12, 2.10 |
+| **WXT** | 2.18s | 2.07s | 2.46s | 2.46, 2.15, 2.11, 2.07, 2.09 |
+| **Addfox** | 2.41s | 2.33s | 2.64s | 2.36, 2.33, 2.64, 2.35, 2.35 |
+| **Plasmo** | 3.02s | 2.99s | 3.05s | 3.01, 3.01, 3.05, 3.03, 2.99 |
 
 ### Build Time
 
-Time to complete production build:
+Time to complete production build (total time from running the command to build complete, including CLI startup overhead):
 
 | Framework | Average | Min | Max | Runs |
 |-----------|---------|-----|-----|------|
-| **Addfox** | 1.51s | 1.47s | 1.67s | 1.67, 1.48, 1.47, 1.48, 1.47 |
-| **Extension.js** | 1.57s | 1.55s | 1.60s | 1.60, 1.56, 1.59, 1.55, 1.57 |
-| **WXT** | 1.95s | 1.92s | 1.98s | 1.98, 1.92, 1.97, 1.92, 1.94 |
-| **Plasmo** | 2.80s | 2.76s | 2.94s | 2.94, 2.76, 2.77, 2.78, 2.76 |
+| **Addfox** | 1.44s | 1.43s | 1.45s | 1.43, 1.44, 1.43, 1.45, 1.45 |
+| **Extension.js** | 1.52s | 1.51s | 1.54s | 1.54, 1.52, 1.52, 1.51, 1.52 |
+| **WXT** | 1.82s | 1.80s | 1.83s | 1.82, 1.83, 1.82, 1.83, 1.80 |
+| **Plasmo** | 2.62s | 2.58s | 2.69s | 2.69, 2.65, 2.58, 2.58, 2.61 |
 
 ### Build Output Size
 
-| Framework | Size |
-|-----------|------|
-| **WXT** | 832 KB |
-| **Addfox** | 840 KB |
-| **Plasmo** | 1,365 KB |
-| **Extension.js** | 1,859 KB |
+Production build output (excluding source maps):
+
+| Framework | Size | Target |
+|-----------|------|--------|
+| **WXT** | 812 KB | `chrome-mv3` |
+| **Addfox** | 837 KB | `extension-chromium` |
+| **Plasmo** | 1.36 MB | `chrome-mv3-prod` |
+| **Extension.js** | 1.45 MB | `chromium` (no source maps; `chrome`/`edge` builds are ~20 MB each with source maps) |
+
+> **Measurement method:** Output directory is cleaned before each build. Size is the exact sum of all file bytes in the production output directory (source maps excluded).
 
 ## Summary
 
-| Framework | Dev Startup | Build Time | Output Size |
-|-----------|-------------|------------|-------------|
-| **Addfox** | 🥇 2.04s | 🥇 1.51s | 🥈 840 KB |
-| **Extension.js** | 🥈 2.34s | 🥈 1.57s | 4th 1,859 KB |
-| **WXT** | 🥉 2.36s | 🥉 1.95s | 🥇 832 KB |
-| **Plasmo** | 4th 3.39s | 4th 2.80s | 🥉 1,365 KB |
+| Framework | Version | Dev Startup | Build Time | Output Size |
+|-----------|---------|-------------|------------|-------------|
+| **Extension.js** | 3.17.0 | 🥇 2.10s | 🥈 1.52s | 🥉 1.45 MB |
+| **WXT** | 0.20.26 | 🥈 2.18s | 🥉 1.82s | 🥇 812 KB |
+| **Addfox** | 0.2.0 | 🥉 2.41s | 🥇 1.44s | 🥈 837 KB |
+| **Plasmo** | 0.90.5 | 4th 3.02s | 4th 2.62s | 4th 1.36 MB |
 
 ## Unified Tech Stack
 
@@ -148,4 +155,4 @@ benchmark/
 - ✅ **Addfox**: Fully implemented with all features
 - ✅ **WXT**: Fully implemented with all features
 - ✅ **Extension.js**: Fully implemented with all features
-- ⚠️ **Plasmo**: Placeholder - needs implementation
+- ✅ **Plasmo**: Fully implemented with all features

@@ -1,10 +1,11 @@
 {
   "name": "benchmark-extensionjs",
   "version": "0.0.1",
+  "type": "module",
   "private": true,
   "description": "Benchmark case: same extension with Extension.js (React + Tailwind 3)",
   "scripts": {
-    "dev": "extension dev --browser=edge",
+    "dev": "extension dev --chromium-binary \"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"",
     "build": "extension build"
   },
   "dependencies": {

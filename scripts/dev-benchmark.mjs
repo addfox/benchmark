@@ -8,13 +8,23 @@
  * - plasmo: 输出包含 "Extension re-packaged"
  * - extensionjs: 输出包含 "compiled successfully"
  */
-import { spawn } from "node:child_process";
+import { spawn, exec } from "node:child_process";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
+
+function killProcessTree(pid) {
+  return new Promise((resolve) => {
+    exec(`taskkill /T /F /PID ${pid} 2>nul`, () => {
+      // 确保 Edge 浏览器也被关闭（extensionjs 会启动 msedge）
+      exec(`taskkill /F /IM msedge.exe 2>nul`, () => resolve());
+    });
+    setTimeout(() => resolve(), 2000);
+  });
+}
 
 const FRAMEWORKS = {
   wxt: {
@@ -100,8 +110,9 @@ function runDevUntilReady(fw) {
           }
         }
         
-        proc.kill("SIGTERM");
-        resolve({ success: true, ms: totalMs });
+        killProcessTree(proc.pid).then(() => {
+          resolve({ success: true, ms: totalMs });
+        });
       }
     };
 
@@ -125,8 +136,9 @@ function runDevUntilReady(fw) {
         clearInterval(timer);
         const totalMs = Date.now() - startTime;
         process.stdout.write(`\r  ⚠️  超时! 已耗时: ${(totalMs / 1000).toFixed(2)}s\n`);
-        try { proc.kill("SIGTERM"); } catch (_) {}
-        resolve({ success: false, ms: totalMs, timeout: true });
+        killProcessTree(proc.pid).then(() => {
+          resolve({ success: false, ms: totalMs, timeout: true });
+        });
       }
     }, 120000);
   });

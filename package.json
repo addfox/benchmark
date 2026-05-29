@@ -21,11 +21,5 @@
   "devDependencies": {
     "picocolors": "^1.1.1"
   },
-  "packageManager": "pnpm@10.0.0",
-  "pnpm": {
-    "overrides": {
-      "addfox": "file:addfox/.yalc/addfox",
-      "@addfox/utils": "file:addfox/.yalc/@addfox/utils"
-    }
-  }
+  "packageManager": "pnpm@10.0.0"
 }

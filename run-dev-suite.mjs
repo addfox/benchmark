@@ -1,18 +1,19 @@
 import { spawn } from "child_process";
 import { exec } from "child_process";
 import { promisify } from "util";
+import { join } from "node:path";
 
 const execAsync = promisify(exec);
 
 async function killProcesses() {
+  // 只关闭浏览器，node 进程由 dev-benchmark.mjs 内部自行管理
   try { await execAsync('taskkill /F /IM msedge.exe 2>nul'); } catch {}
-  try { await execAsync('taskkill /F /IM node.exe 2>nul'); } catch {}
 }
 
 function runDev(framework) {
   return new Promise((resolve) => {
     const proc = spawn("node", [`scripts/dev-benchmark.mjs`, framework], {
-      cwd: "C:\\programs\\benchmark",
+      cwd: process.cwd(),
       shell: true,
       stdio: ["ignore", "pipe", "pipe"],
     });
@@ -116,7 +117,7 @@ async function main() {
   // Save results
   const fs = await import("fs");
   fs.writeFileSync(
-    "C:\\programs\\benchmark\\benchmark-dev-edge.json",
+    join(process.cwd(), "benchmark-dev-edge.json"),
     JSON.stringify(results, null, 2)
   );
 }

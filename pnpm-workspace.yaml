@@ -4,3 +4,24 @@ packages:
   - "extensionjs"
   - "parcel-extension"
   - "wxt"
+  - "../addfox/packages/*"
+  - "../addfox/packages/plugins/*"
+
+catalog:
+  # Rsbuild 生态 - 使用正式版
+  "@rsbuild/core": "2.0.7"
+  "@rspack/core": "2.0.4"
+  "@rsbuild/plugin-babel": "^1.2.0"
+  "@rsbuild/plugin-vue": "^1.2.8"
+  "@rsbuild/plugin-vue-jsx": "^2.0.0"
+
+  # Rslib 构建工具
+  "@rslib/core": "^0.21.5"
+
+  # 测试工具
+  "@rstest/core": "^0.9.9"
+  "@rstest/coverage-istanbul": "^0.3.2"
+
+  # TypeScript
+  "typescript": "^5.0.0"
+  "@types/node": "^20.0.0"
