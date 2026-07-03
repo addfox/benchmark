@@ -69,7 +69,7 @@ function runSingleBenchmark(type, framework) {
     const script = type === "dev" ? "dev-benchmark.mjs" : "build-benchmark.mjs";
     const proc = spawn("node", [join(ROOT, "scripts", script), framework], {
       cwd: ROOT,
-      stdio: ["ignore", "pipe", "pipe"],
+      stdio: ["pipe", "pipe", "pipe"], // stdin 需要保留给 dev-benchmark 及其子进程 addfox dev
     });
 
     let output = "";
@@ -146,16 +146,24 @@ async function benchmarkFramework(type, framework) {
   const pureBuildResults = [];
   const sizeResults = [];
 
+  // 每次 run 结束后：先彻底关闭本次启动的浏览器，再等待 POST_RUN_COOLDOWN_MS，
+  // 确保浏览器进程、23333/4299 端口与用户数据目录锁都已释放，下一次 run 从干净状态开始。
+  // 这保证了严格串行：一个 run（含浏览器）完全收尾后，才进入下一个 run。
+  const POST_RUN_COOLDOWN_MS = 2000;
+  const closeBrowserAndCooldown = async (label) => {
+    if (type === "dev") {
+      await killBrowserProcesses(); // 自动关闭本次 run 启动的浏览器（chrome / msedge）
+    }
+    await killPortProcesses();
+    console.log(`${label} 关闭浏览器，冷却 ${POST_RUN_COOLDOWN_MS / 1000}s...`);
+    await new Promise((r) => setTimeout(r, POST_RUN_COOLDOWN_MS));
+    await killPortProcesses();
+  };
+
   // Warm-up run: 不计入结果，消除冷启动影响
   console.log(`\n[Warm-up] 预热运行（不计入结果）...`);
   await runSingleBenchmark(type, framework);
-  if (type === "dev") {
-    await killBrowserProcesses();
-    await killPortProcesses();
-  }
-  console.log("Cooling down...");
-  await new Promise(r => setTimeout(r, 3000));
-  await killPortProcesses();
+  await closeBrowserAndCooldown("[Warm-up]");
 
   for (let i = 1; i <= RUNS; i++) {
     console.log(`\nRun ${i}/${RUNS}...`);
@@ -176,9 +184,11 @@ async function benchmarkFramework(type, framework) {
       console.log(`✗ Failed`);
     }
 
+    // 串行保证：无论成功或失败，本次 run 都关闭浏览器 + 冷却后再进入下一次。
     if (i < RUNS) {
-      console.log("Cooling down...");
-      await new Promise(r => setTimeout(r, 3000));
+      await closeBrowserAndCooldown(`Run ${i}/${RUNS}`);
+    } else if (type === "dev") {
+      await killBrowserProcesses(); // 最后一次也要关闭浏览器，避免残留进程
       await killPortProcesses();
     }
   }

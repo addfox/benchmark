@@ -21,5 +21,35 @@
   "devDependencies": {
     "picocolors": "^1.1.1"
   },
-  "packageManager": "pnpm@10.0.0"
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "overrides": {
+      "addfox": "link:..\\addfox\\packages\\addfox",
+      "@addfox/utils": "link:..\\addfox\\packages\\utils",
+      "@addfox/core": "link:..\\addfox\\packages\\core",
+      "@addfox/common": "link:..\\addfox\\packages\\common",
+      "@addfox/cli": "link:..\\addfox\\packages\\cli",
+      "@addfox/rsbuild-plugin-extension-entry": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-entry",
+      "@addfox/rsbuild-plugin-extension-hmr": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-hmr",
+      "@addfox/rsbuild-plugin-extension-manifest": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-manifest",
+      "@addfox/rsbuild-plugin-extension-monitor": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-monitor",
+      "@addfox/rsbuild-plugin-vue": "link:..\\..\\addfox\\packages\\plugins\\rsbuild-plugin-vue",
+      "@addfox/launcher": "link:..\\addfox\\packages\\launcher",
+      "@addfox/pkg-manager": "link:..\\addfox\\packages\\pkg-manager"
+    }
+  },
+  "dependencies": {
+    "@addfox/cli": "link:..\\addfox\\packages\\cli",
+    "@addfox/common": "link:..\\addfox\\packages\\common",
+    "@addfox/core": "link:..\\addfox\\packages\\core",
+    "@addfox/launcher": "link:..\\addfox\\packages\\launcher",
+    "@addfox/pkg-manager": "link:..\\addfox\\packages\\pkg-manager",
+    "@addfox/rsbuild-plugin-extension-entry": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-entry",
+    "@addfox/rsbuild-plugin-extension-hmr": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-hmr",
+    "@addfox/rsbuild-plugin-extension-manifest": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-manifest",
+    "@addfox/rsbuild-plugin-extension-monitor": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-extension-monitor",
+    "@addfox/rsbuild-plugin-vue": "link:..\\addfox\\packages\\plugins\\rsbuild-plugin-vue",
+    "@addfox/utils": "link:..\\addfox\\packages\\utils",
+    "addfox": "link:..\\addfox\\packages\\addfox"
+  }
 }

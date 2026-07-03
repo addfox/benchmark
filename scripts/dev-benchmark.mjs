@@ -71,7 +71,9 @@ function runDevUntilReady(fw) {
     const proc = spawn(exe, args, {
       cwd: fw.cwd,
       shell: true,
-      stdio: ["ignore", "pipe", "pipe"],
+      // stdin 不能是 ignore：addfox dev 会尝试读取 stdin 注册 r/o 快捷键，
+      // ignore 会导致它过早退出，从而 never 打印 extensions loaded。
+      stdio: ["pipe", "pipe", "pipe"],
     });
 
     let stdout = "";
@@ -92,27 +94,31 @@ function runDevUntilReady(fw) {
       const chunk = data.toString();
       stdout += chunk;
       
-      // 检查是否匹配完成标志
-      if (!isReady && fw.readyPattern.test(chunk)) {
-        isReady = true;
-        clearInterval(timer);
-        const totalMs = Date.now() - startTime;
-        const totalSec = (totalMs / 1000).toFixed(2);
-        
-        process.stdout.write(`\r  ✅ Dev 就绪! 总耗时: ${totalSec}s      \n`);
-        console.log(`\n  匹配到的输出片段:`);
-        // 显示匹配行前后的一些上下文
-        const lines = stdout.split('\n');
-        for (let i = 0; i < lines.length; i++) {
-          if (fw.readyPattern.test(lines[i])) {
-            console.log(`    > ${lines[i].trim()}`);
-            break;
+      // 检查是否匹配完成标志（在累积后的 stdout 上匹配，避免行被分片导致漏判；
+      // 同时剥离 ANSI 颜色码，避免颜色串干扰正则）。
+      if (!isReady) {
+        const clean = stdout.replace(/\x1B\[[0-9;]*m/g, '');
+        if (fw.readyPattern.test(clean)) {
+          isReady = true;
+          clearInterval(timer);
+          const totalMs = Date.now() - startTime;
+          const totalSec = (totalMs / 1000).toFixed(2);
+          
+          process.stdout.write(`\r  ✅ Dev 就绪! 总耗时: ${totalSec}s      \n`);
+          console.log(`\n  匹配到的输出片段:`);
+          // 显示匹配行前后的一些上下文
+          const lines = stdout.split('\n');
+          for (let i = 0; i < lines.length; i++) {
+            if (fw.readyPattern.test(lines[i].replace(/\x1B\[[0-9;]*m/g, ''))) {
+              console.log(`    > ${lines[i].trim()}`);
+              break;
+            }
           }
+          
+          killProcessTree(proc.pid).then(() => {
+            resolve({ success: true, ms: totalMs });
+          });
         }
-        
-        killProcessTree(proc.pid).then(() => {
-          resolve({ success: true, ms: totalMs });
-        });
       }
     };
 

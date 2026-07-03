@@ -19,6 +19,8 @@ const packagePaths = {
   '@addfox/core': resolve(packagesDir, 'core'),
   '@addfox/common': resolve(packagesDir, 'common'),
   '@addfox/cli': resolve(packagesDir, 'cli'),
+  '@addfox/launcher': resolve(packagesDir, 'launcher'),
+  '@addfox/pkg-manager': resolve(packagesDir, 'pkg-manager'),
   '@addfox/rsbuild-plugin-extension-entry': resolve(pluginsDir, 'rsbuild-plugin-extension-entry'),
   '@addfox/rsbuild-plugin-extension-hmr': resolve(pluginsDir, 'rsbuild-plugin-extension-hmr'),
   '@addfox/rsbuild-plugin-extension-manifest': resolve(pluginsDir, 'rsbuild-plugin-extension-manifest'),
